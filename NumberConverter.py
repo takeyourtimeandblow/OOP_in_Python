@@ -12,18 +12,16 @@ class NumberConverter:
             if self.lst[i] % 5 == 0:
                 self.lst[i]+=1
 
+    def match(self, comma: str):
+        exec(compile(f'self.{comma}()', 'none', 'eval'))
+                
+
 def main():
     nums = NumberConverter(list(map(int, input().split())))
     no_of_commands = int(input())
     for _ in range(no_of_commands):
-        match input():
-            case "make_negative":
-                nums.make_negative()
-            case "square":
-                nums.square()
-            case "strange_command":
-                nums.strange_command()
-    print(nums.lst)
+        nums.match(input())
+    print(*nums.lst)
 
 if __name__ == "__main__":
     main()
